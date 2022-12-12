@@ -1,0 +1,15 @@
+syntax="proto3";
+
+package user_service;
+option go_package="genproto/user_service";
+
+
+
+message SignInUserRequest {
+ string username = 1;
+ string password = 2;
+}
+
+message SignInUserResponse {
+    string id = 1;
+}

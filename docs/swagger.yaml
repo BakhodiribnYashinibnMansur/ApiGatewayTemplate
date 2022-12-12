@@ -1,0 +1,72 @@
+basePath: /
+definitions:
+  http.Response:
+    properties:
+      data: {}
+      description:
+        type: string
+      status:
+        type: string
+    type: object
+  model.UserSignIn:
+    properties:
+      password:
+        default: password
+        type: string
+      username:
+        default: username
+        type: string
+    required:
+    - password
+    - username
+    type: object
+host: gitlab.com/rizoMulk
+info:
+  contact:
+    email: phapp0224mb@gmail.com
+    name: Bakhodir Yashin Mansur
+  description: API Server for Rizo Mulk Application
+  termsOfService: gitlab.com/rizoMulk
+  title: Rizo Mulk
+  version: "1.0"
+paths:
+  /api/v1/account/sign-in:
+    post:
+      consumes:
+      - application/json
+      description: User Sign In  user.
+      parameters:
+      - description: Sign In
+        in: body
+        name: signup
+        required: true
+        schema:
+          $ref: '#/definitions/model.UserSignIn'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/http.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/http.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/http.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/http.Response'
+      summary: User Sign In user
+      tags:
+      - User
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

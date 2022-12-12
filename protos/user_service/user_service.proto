@@ -1,0 +1,10 @@
+syntax="proto3";
+
+package user_service;
+option go_package="genproto/user_service";
+
+import "user.proto";
+
+service UserService {
+    rpc SigInUser(SignInUserRequest) returns (SignInUserResponse) {}
+}
